@@ -18,7 +18,7 @@ public class Company {
     @Column(name = "id")
     private Long ID;
     @NotNull
-    @Length(max = 50,min = 25)
+    @Length(max = 50,min = 2)
     private String name;
     @Nullable
     private String description;
