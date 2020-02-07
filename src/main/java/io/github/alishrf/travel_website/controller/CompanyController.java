@@ -30,6 +30,7 @@ public class CompanyController {
 
     @GetMapping("/companies/{id}")
     public Company getCompanyBuId(@PathVariable(value = "id") Long id){
+
         return companyService.getCompanyById(id,companyRepository);
     }
 
