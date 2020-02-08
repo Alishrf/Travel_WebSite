@@ -2,20 +2,19 @@ package io.github.alishrf.travel_website.service;
 
 import io.github.alishrf.travel_website.model.Company;
 import io.github.alishrf.travel_website.repository.CompanyRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
+
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
 
-@RestController
+
 public class CompanyService {
-    Logger logger =Logger.getLogger("My Company Service");
+
+    private Logger logger =Logger.getLogger("My Company Service");
 
     public List<Company> getAllCompanies(CompanyRepository companyRepository){
         List<Company> companies = companyRepository.findAll();
