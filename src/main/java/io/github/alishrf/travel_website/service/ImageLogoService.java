@@ -1,10 +1,8 @@
 package io.github.alishrf.travel_website.service;
 
 import io.github.alishrf.travel_website.exception.ResourceNotFoundException;
-import io.github.alishrf.travel_website.model.BusTripEntity;
 import io.github.alishrf.travel_website.model.CompanyEntity;
-import io.github.alishrf.travel_website.model.ImageLogoEntity;
-import io.github.alishrf.travel_website.repository.BusTripRepository;
+import io.github.alishrf.travel_website.model.ImageEntity;
 import io.github.alishrf.travel_website.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,15 +30,15 @@ public class ImageLogoService {
             logger.warning("Company logo is null");
             return null;
         }
-        ImageLogoEntity imageLogoEntity = new ImageLogoEntity();
+        ImageEntity imageEntity = new ImageEntity();
         Path path = Paths.get(Paths.get("").toAbsolutePath()+
                 "/src/main/resources/static/photos/companies/"+
                 companyEntity.getName()+".png");
         try {
-            imageLogoEntity.setBytes(multipartFile.getBytes());
-            imageLogoEntity.setPath(path.toString());
-            companyEntity.setImageLogoEntity(imageLogoEntity);
-            Files.write(path,imageLogoEntity.getBytes());
+            imageEntity.setBytes(multipartFile.getBytes());
+            imageEntity.setPath(path.toString());
+            companyEntity.setImageEntity(imageEntity);
+            Files.write(path, imageEntity.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }

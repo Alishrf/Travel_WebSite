@@ -23,7 +23,19 @@ public class SeatEntity {
     @Enumerated()
     private GenderEntity genderEntityPerson;
 
+    @ManyToOne(targetEntity = BusTripEntity.class,fetch = FetchType.EAGER)
+    @JoinColumn(name = "fk_bus_id",referencedColumnName = "id")
+    private BusTripEntity busTrip;
+
     public SeatEntity() {
+    }
+
+    public BusTripEntity getBusTrip() {
+        return busTrip;
+    }
+
+    public void setBusTrip(BusTripEntity busTrip) {
+        this.busTrip = busTrip;
     }
 
     public Long getID() {
@@ -40,5 +52,21 @@ public class SeatEntity {
 
     public void setSeatNumber(int seatNumber) {
         this.seatNumber = seatNumber;
+    }
+
+    public boolean isFull() {
+        return isFull;
+    }
+
+    public void setFull(boolean full) {
+        isFull = full;
+    }
+
+    public GenderEntity getGenderEntityPerson() {
+        return genderEntityPerson;
+    }
+
+    public void setGenderEntityPerson(GenderEntity genderEntityPerson) {
+        this.genderEntityPerson = genderEntityPerson;
     }
 }

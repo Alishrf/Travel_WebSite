@@ -27,9 +27,9 @@ public class CompanyEntity {
 
 
     @Nullable
-    @OneToOne(targetEntity =ImageLogoEntity.class, cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToOne(targetEntity = ImageEntity.class, cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "img_id",referencedColumnName = "id")
-    private ImageLogoEntity imageLogoEntity;
+    private ImageEntity imageEntity;
 
 
 
@@ -61,11 +61,11 @@ public class CompanyEntity {
     }
 
     @Nullable
-    public ImageLogoEntity getImageLogoEntity() {
-        return imageLogoEntity;
+    public ImageEntity getImageEntity() {
+        return imageEntity;
     }
 
-    public void setImageLogoEntity(@Nullable ImageLogoEntity imageLogoEntity) {
-        this.imageLogoEntity = imageLogoEntity;
+    public void setImageEntity(@Nullable ImageEntity imageEntity) {
+        this.imageEntity = imageEntity;
     }
 }

@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "image_logo")
-public class ImageLogoEntity {
+public class ImageEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -18,7 +18,7 @@ public class ImageLogoEntity {
     @Column(name = "path")
     private String path;
 
-    public ImageLogoEntity() {
+    public ImageEntity() {
     }
 
     public Long getID() {
