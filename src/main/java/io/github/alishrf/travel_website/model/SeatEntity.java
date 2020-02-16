@@ -2,10 +2,11 @@ package io.github.alishrf.travel_website.model;
 
 
 import javax.persistence.*;
+import javax.ws.rs.DefaultValue;
 
 @Entity
 @Table(name = "seat")
-public class Seat {
+public class SeatEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -13,6 +14,17 @@ public class Seat {
 
     @Column(name = "seat_number")
     private int seatNumber;
+
+    @DefaultValue("false")
+    @Column(name = "is_full")
+    private boolean isFull;
+
+    @DefaultValue("2")
+    @Enumerated()
+    private GenderEntity genderEntityPerson;
+
+    public SeatEntity() {
+    }
 
     public Long getID() {
         return ID;

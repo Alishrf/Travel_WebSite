@@ -1,6 +1,5 @@
 package io.github.alishrf.travel_website;
 
-import io.github.alishrf.travel_website.model.BusType;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;

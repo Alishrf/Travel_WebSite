@@ -1,25 +1,24 @@
 package io.github.alishrf.travel_website.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name = "trip")
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Trip {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class TripEntity {
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @Column(name = "id")
     private Long ID;
 
-    @ManyToOne(targetEntity = City.class)
+    @ManyToOne(targetEntity = CityEntity.class,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "source_city",referencedColumnName = "id")
-    private City sourceCity;
+    private CityEntity sourceCityEntity;
 
-    @ManyToOne(targetEntity = City.class)
+    @ManyToOne(targetEntity = CityEntity.class,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "destination_city",referencedColumnName = "id")
-    private City destinationCity;
+    private CityEntity destinationCityEntity;
 
     @Column(name = "start_date")
     private Timestamp startDate;
@@ -33,17 +32,16 @@ public class Trip {
     @Column(name = "residual_capacity")
     private int residualCapacity;
 
-    @Size(min = 0,max = 100)
     private int off;
 
     @Column(name = "description")
     private String description;
 
-    @ManyToOne(targetEntity = Company.class)
+    @ManyToOne(targetEntity = CompanyEntity.class,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "fk_company",referencedColumnName = "id")
-    private Company company;
+    private CompanyEntity companyEntity;
 
-    public Trip() {
+    public TripEntity() {
     }
 
     public Long getID() {
@@ -54,20 +52,20 @@ public class Trip {
         this.ID = ID;
     }
 
-    public City getSourceCity() {
-        return sourceCity;
+    public CityEntity getSourceCityEntity() {
+        return sourceCityEntity;
     }
 
-    public void setSourceCity(City sourceCity) {
-        this.sourceCity = sourceCity;
+    public void setSourceCityEntity(CityEntity sourceCityEntity) {
+        this.sourceCityEntity = sourceCityEntity;
     }
 
-    public City getDestinationCity() {
-        return destinationCity;
+    public CityEntity getDestinationCityEntity() {
+        return destinationCityEntity;
     }
 
-    public void setDestinationCity(City destinationCity) {
-        this.destinationCity = destinationCity;
+    public void setDestinationCityEntity(CityEntity destinationCityEntity) {
+        this.destinationCityEntity = destinationCityEntity;
     }
 
     public Timestamp getStartDate() {
@@ -118,11 +116,11 @@ public class Trip {
         this.description = description;
     }
 
-    public Company getCompany() {
-        return company;
+    public CompanyEntity getCompanyEntity() {
+        return companyEntity;
     }
 
-    public void setCompany(Company company) {
-        this.company = company;
+    public void setCompanyEntity(CompanyEntity companyEntity) {
+        this.companyEntity = companyEntity;
     }
 }
