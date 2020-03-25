@@ -1,11 +1,8 @@
 package io.github.alishrf.travel_website.model;
 
 
-import io.micrometer.core.annotation.Counted;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import javax.ws.rs.DefaultValue;
 import java.util.List;
 
 @Entity
@@ -26,19 +23,30 @@ public class PassengerEntity {
     @Column(name = "email")
     private String email;
 
-    @Enumerated()
+    @Enumerated
     private GenderEntity gender;
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_passenger" ,referencedColumnName = "id")
-    private List<TicketEntity> ActivityTickets;
+    private List<TicketEntity> activityTickets;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "fk_passenger" ,referencedColumnName = "id")
-    private List<TicketEntity> recentTickets;
 
     public PassengerEntity() {
     }
+
+    public List<TicketEntity> getActivityTickets() {
+        return activityTickets;
+    }
+
+    public void setActivityTickets(List<TicketEntity> activityTickets) {
+        this.activityTickets = activityTickets;
+    }
+
+
+    public void addToActivityTicket(TicketEntity ticket){
+        activityTickets.add(ticket);
+    }
+
 
     public Long getID() {
         return ID;

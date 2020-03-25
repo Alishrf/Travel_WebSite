@@ -11,11 +11,12 @@ public class TicketEntity {
     @Column(name = "id")
     private Long ID;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER,targetEntity = PassengerEntity.class,
+            cascade = {CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "fk_passenger" ,referencedColumnName = "id")
     private PassengerEntity passenger;
 
-    @OneToOne
+    @OneToOne(targetEntity = SeatEntity.class, cascade = {CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "fk_seat",referencedColumnName = "id")
     private SeatEntity seat;
 
@@ -26,8 +27,10 @@ public class TicketEntity {
     @JoinColumn(name = "ticket_qr")
     private ImageEntity imageEntity;
 
+
     public TicketEntity() {
     }
+
 
     public Long getID() {
         return ID;

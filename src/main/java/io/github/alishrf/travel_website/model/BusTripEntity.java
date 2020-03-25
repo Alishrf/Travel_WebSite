@@ -36,4 +36,12 @@ public class BusTripEntity extends TripEntity {
     public void setSeatEntities(List<SeatEntity> seatEntities) {
         this.seatEntities = seatEntities;
     }
+
+    @Override
+    public String toString() {
+        return "BusTripEntity{" +
+                "busTypeEntity=" + busTypeEntity +
+                ", seatEntities=" + seatEntities +
+                '}';
+    }
 }

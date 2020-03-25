@@ -16,6 +16,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class CompanyController {
+    public enum da{WINTER};
+
 
     @Autowired
     CompanyService companyService;
@@ -35,7 +37,7 @@ public class CompanyController {
 
     @PostMapping("/companies")
     @Consumes("img/jpg")
-    public CompanyEntity createCompany(@RequestBody @Valid CompanyEntity companyEntity){
+    public CompanyEntity createCompany(@RequestParam @Valid CompanyEntity companyEntity){
 
         return companyService.createCompany(companyEntity);
     }

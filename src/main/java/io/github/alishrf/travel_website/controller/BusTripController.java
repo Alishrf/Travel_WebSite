@@ -17,7 +17,8 @@ public class BusTripController {
     BusTripService busTripService;
 
     @PostMapping("/bustrips")
-    public BusTripEntity createBusTrip(@RequestBody @Valid BusTripEntity busTripEntity){
+    public BusTripEntity createBusTrip(@RequestBody @Valid List<String> strings){
+        BusTripEntity busTripEntity = new BusTripEntity();
         return busTripService.createBusTripe(busTripEntity);
     }
 

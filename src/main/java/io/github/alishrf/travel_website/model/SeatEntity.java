@@ -69,4 +69,14 @@ public class SeatEntity {
     public void setGenderEntityPerson(GenderEntity genderEntityPerson) {
         this.genderEntityPerson = genderEntityPerson;
     }
+
+
+    @Override
+    public String toString() {
+        return "SeatEntity{" +
+                "ID=" + ID +
+                ", seatNumber=" + seatNumber +
+                ", genderEntityPerson=" + genderEntityPerson +
+                '}';
+    }
 }

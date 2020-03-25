@@ -10,8 +10,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class TravelWebsiteApplication {
 
     public static void main(String[] args) {
-        Hashids hashids = new Hashids("saltttttttttttttttttttttttttttttttttttttt");
-        System.out.println(hashids.encode(123,46 ,789,45566,1424,123,7841));
         SpringApplication.run(TravelWebsiteApplication.class, args);
     }
 
