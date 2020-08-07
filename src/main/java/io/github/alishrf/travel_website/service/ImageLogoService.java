@@ -20,20 +20,20 @@ public class ImageLogoService {
     @Autowired
     CompanyRepository companyRepository;
 
-    Logger logger =Logger.getLogger("Image Logo Service");
+    Logger logger = Logger.getLogger("Image Logo Service");
 
     public CompanyEntity setImageLogoToBusTrip(Long id, MultipartFile multipartFile) {
-        CompanyEntity companyEntity =companyRepository.findById(id).orElseThrow(() -> {
-            return new ResourceNotFoundException("busTripeEntity","id",id);
+        CompanyEntity companyEntity = companyRepository.findById(id).orElseThrow(() -> {
+            return new ResourceNotFoundException("busTripeEntity", "id", id);
         });
-        if(multipartFile==null){
+        if (multipartFile == null) {
             logger.warning("Company logo is null");
             return null;
         }
         ImageEntity imageEntity = new ImageEntity();
-        Path path = Paths.get(Paths.get("").toAbsolutePath()+
-                "/src/main/resources/static/photos/companies/"+
-                companyEntity.getName()+".png");
+        Path path = Paths.get(Paths.get("").toAbsolutePath() +
+                "/src/main/resources/static/photos/companies/" +
+                companyEntity.getName() + ".png");
         try {
             imageEntity.setBytes(multipartFile.getBytes());
             imageEntity.setPath(path.toString());

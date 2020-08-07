@@ -10,7 +10,6 @@ import io.github.alishrf.travel_website.repository.TicketRepository;
 import org.hashids.Hashids;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.security.krb5.internal.Ticket;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;

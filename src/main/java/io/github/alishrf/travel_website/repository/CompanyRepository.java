@@ -9,5 +9,4 @@ public interface CompanyRepository extends JpaRepository<CompanyEntity, Long> {
     CompanyEntity findByNameContaining(String name);
 
 
-
 }

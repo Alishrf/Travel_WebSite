@@ -15,11 +15,11 @@ public class CouponEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
 
-    @Column(name = "coupon_code",unique = true)
+    @Column(name = "coupon_code", unique = true)
     private String couponCode;
 
     @Column(name = "discount")
-    @Size(min = 0,max = 100)
+    @Size(min = 0, max = 100)
     private int discount;
 
     @Column(name = "max_discount")

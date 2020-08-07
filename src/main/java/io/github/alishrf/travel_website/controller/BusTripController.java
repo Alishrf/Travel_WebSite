@@ -1,10 +1,10 @@
 package io.github.alishrf.travel_website.controller;
 
 
-
 import io.github.alishrf.travel_website.model.BusTripEntity;
 import io.github.alishrf.travel_website.service.BusTripService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -13,21 +13,20 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class BusTripController {
+
     @Autowired
     BusTripService busTripService;
 
     @PostMapping("/bustrips")
-    public BusTripEntity createBusTrip(@RequestBody @Valid List<String> strings){
-        BusTripEntity busTripEntity = new BusTripEntity();
+    public BusTripEntity createBusTrip(@RequestBody @Valid BusTripEntity busTripEntity, Model model, @RequestBody @Valid String s) {
+
         return busTripService.createBusTripe(busTripEntity);
     }
 
     @GetMapping("/bustrips")
-    public List<BusTripEntity> getAllBusTrips(){
+    public List<BusTripEntity> getAllBusTrips() {
         return busTripService.ShowAllBusTrip();
     }
-
-
 
 
 }

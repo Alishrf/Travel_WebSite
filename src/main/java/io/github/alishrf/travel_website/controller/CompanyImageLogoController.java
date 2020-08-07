@@ -15,8 +15,8 @@ public class CompanyImageLogoController {
 
     @PostMapping("{id}/uploadimagelogo")
     public CompanyEntity saveCompanyImageLogo(@PathVariable("id") Long id,
-                                              @RequestBody MultipartFile multipartFile){
+                                              @RequestBody MultipartFile multipartFile) {
 
-        return imageLogoService.setImageLogoToBusTrip(id,multipartFile);
+        return imageLogoService.setImageLogoToBusTrip(id, multipartFile);
     }
 }

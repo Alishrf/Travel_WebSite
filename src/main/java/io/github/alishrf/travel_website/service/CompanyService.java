@@ -22,24 +22,24 @@ import java.util.logging.Logger;
 @Service
 public class CompanyService {
 
-    private Logger logger =Logger.getLogger("My Company Service");
+    private Logger logger = Logger.getLogger("My Company Service");
 
     @Autowired
     private CompanyRepository companyRepository;
 
 
-    public List<CompanyEntity> getAllCompanies(){
+    public List<CompanyEntity> getAllCompanies() {
         List<CompanyEntity> companies = companyRepository.findAll();
-        if(companies == null){
+        if (companies == null) {
             companies = new ArrayList<>();
         }
         logger.info("Show All Companies");
-        return companies ;
+        return companies;
     }
 
-    public CompanyEntity getCompanyById(Long id){
+    public CompanyEntity getCompanyById(Long id) {
         CompanyEntity companyEntity = companyRepository.findById(id).orElse(null);
-        if(companyEntity == null){
+        if (companyEntity == null) {
             logger.warning("Your Company Id Is Not Available");
             //handle error & throw ex
         }
@@ -49,27 +49,26 @@ public class CompanyService {
     }
 
     public CompanyEntity createCompany(CompanyEntity companyEntity) {
-        if(companyRepository.findByNameContaining(companyEntity.getName()) != null){
+        if (companyRepository.findByNameContaining(companyEntity.getName()) != null) {
             logger.warning("This Company name is already available");
             return null;
         }
-        if(companyEntity.getName().length()<2 || companyEntity.getName().length() >50){
+        if (companyEntity.getName().length() < 2 || companyEntity.getName().length() > 50) {
             logger.warning("Company name is too short or too long");
             return null;
         }
-        if(companyEntity.getDescription() == null){
+        if (companyEntity.getDescription() == null) {
             companyEntity.setDescription("");
         }
-
 
 
         return companyRepository.save(companyEntity);
     }
 
 
-    public ResponseEntity<?> deleteCompany(Long id){
+    public ResponseEntity<?> deleteCompany(Long id) {
         CompanyEntity companyEntity = companyRepository.findById(id).orElse(null);
-        if(companyEntity == null){
+        if (companyEntity == null) {
             logger.warning("Your Company Id Is Not Available");
             //handle error & throw ex
         }
